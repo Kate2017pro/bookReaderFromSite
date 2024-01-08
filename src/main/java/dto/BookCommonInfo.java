@@ -8,4 +8,5 @@ public class BookCommonInfo { //todo заменить передачу чере�
     private String author;
     private String title;
     private String image;
+    private String srcUrl;
 }

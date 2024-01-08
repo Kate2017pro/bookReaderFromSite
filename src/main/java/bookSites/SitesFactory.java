@@ -24,6 +24,15 @@ public class SitesFactory {
             case AO3:
                 log.info("Создан объект класса " + AO3.class.getName());
                 return new AO3(seleniumProperties);
+            case RUVERS:
+                log.info("Создан объект класса " + Ruvers.class.getName());
+                return new Ruvers(seleniumProperties);
+            case OKSIJI:
+                log.info("Создан объект класса " + Oksiji.class.getName());
+                return new Oksiji(seleniumProperties);
+            case WUXIA:
+                log.info("Создан объект класса " + Wuxia.class.getName());
+                return new Wuxia(seleniumProperties);
             default:
                 throw new SeleniumWorkExecption("Не поддерживаемый тип сайта (SITE_TYPE): " + siteForReading);
         }

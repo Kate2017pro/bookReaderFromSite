@@ -5,6 +5,8 @@ import dto.BookCommonInfo;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Fb2Writer {
     private static final String FIRST_LINE_IN_FILE =
@@ -27,18 +29,21 @@ public class Fb2Writer {
     }
 
     public void writeDescription(BookCommonInfo bookCommonInfo) {
-        final String begin = "<description>\n" +
-                "\t<title-info>\n" +
-                "\t\t<genre>sf</genre>\n" +
-                "\t\t<lang>ru</lang>\n" +
-                "\t\t<src-lang>ru</src-lang>\n";
+        final String begin = """
+                <description>
+                \t<title-info>
+                \t\t<genre>sf</genre>
+                \t\t<lang>ru</lang>
+                \t\t<src-lang>ru</src-lang>
+                """;
         final String middle = "\t</title-info>\n" +
                 "\t<document-info>\n" +
                 "\t\t<author>\n" +
-                "\t\t<nickname>Seraza</nickname></author>\n" +
-                "\t\t<program-used>Seraza`s programm to fb2 from site</program-used>\n" +
-                "\t\t<id>Seraza's_v1</id>\n" +
+                "\t\t<nickname>Some one man</nickname></author>\n" +
+                "\t\t<program-used>Programm to fb2 from site</program-used>\n" +
                 "\t\t<version>1</version>\n" +
+                "<src-url>"+bookCommonInfo.getSrcUrl()+"</src-url>"+
+                "\t\t<date value=\""+LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE)+"\">"+ LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE)+"</date>\n" +
                 "\t</document-info>\n" +
                 "</description>\n" +
                 "<body>\n";

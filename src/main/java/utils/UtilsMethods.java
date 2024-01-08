@@ -28,10 +28,10 @@ public class UtilsMethods {
             textWithHTMLCode = textWithHTMLCode.replaceAll("\\<\\/b\\>", "</strong>");
         }
         if (textWithHTMLCode.contains("<br>")) {
-            if (textWithHTMLCode.equals("<br>")) { //если равно пустой строке то не добавляем строку так как эта пустота обернется в абзац потом
+            if (textWithHTMLCode.equals("<br>")) { //если сам абзац равен пустой строке (те только из тэга) то не добавляем тэги абзаца так как эта пустота обернется в абзац потом
                 textWithHTMLCode = "";
             } else {
-                textWithHTMLCode = textWithHTMLCode.replaceAll("\\<br\\>", "<p></p>");//"<empty-line/>");
+                textWithHTMLCode = textWithHTMLCode.replaceAll("\\<br\\>", "</p><p>\n");//"<empty-line/>");
             }
         }
         //  if (textWithHTMLCode.equals("<hr>")) {//их надо самому отслеживать((( work??
@@ -47,6 +47,7 @@ public class UtilsMethods {
         info.setAuthor("Автор");
         info.setAnnotation("Аннотация");
         info.setTitle("Заголовок");
+        info.setSrcUrl("URL");
         return info;
     }
 
